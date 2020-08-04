@@ -1,4 +1,5 @@
 import random
+from django.http import Http404
 from django.shortcuts import render
 from django.shortcuts import redirect
 import markdown2
@@ -19,6 +20,8 @@ def index(request):
 
 
 def entry(request, title):
+    if util.get_entry(title) is None:
+        raise Http404
     return render(request, 'encyclopedia/entry.html', {'entry': markdown2.markdown(util.get_entry(title)), 'title': title})
 
 
