@@ -1,1 +1,3 @@
-# Project 1 for Harvard University Web Programming Course
+# Project 1
+
+Harvard University Web Programming Course
