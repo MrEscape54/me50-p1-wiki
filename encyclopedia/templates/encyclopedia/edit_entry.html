@@ -1,0 +1,32 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia | Edit Entry
+{% endblock %}
+
+
+{% block body %}
+
+    {% if message %}
+        <h1>{{message}}</h1>
+    {% else %}
+        <h1>Edit Entry</h1>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-row" style="display:none;">
+                <div class="col-md-6 mb-3">
+                    {{ form.title }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    {{ form.content }}
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a class="btn btn-secondary" href="{% url 'encyclopedia:entry' title %}">Cancel</a>
+        </form>
+    {% endif %}
+    
+{% endblock %}
